@@ -6,7 +6,7 @@ export const addApiPost = () => (dispatch) => {
     .then((res) => dispatch({ type: ALL_API_POST, payload: res.data.results }));
 };
 
-export const deletePost = (id) => {
+export const deleteApiPost = (id) => {
   console.log(id);
   return {
     type: DELETE_API_POST,

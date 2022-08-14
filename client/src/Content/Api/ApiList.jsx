@@ -1,6 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteApiPost } from '../../Redux/actions/apiActions';
 
 export default function ApiList({ apis }) {
+  const dispatch = useDispatch();
+
+  const deleteHandler = () => {
+    dispatch(deleteApiPost(apis.id));
+  };
   return (
     <div className="position">
       <div className="content">
@@ -11,6 +18,7 @@ export default function ApiList({ apis }) {
               <h2>{apis.name}</h2>
               <h4>{apis.species}</h4>
               <h4>{apis.status}</h4>
+              <h4 onClick={deleteHandler}>Удалить</h4>
             </div>
           </div>
         </div>

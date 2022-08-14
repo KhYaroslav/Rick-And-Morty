@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { addApiPost } from '../../Redux/actions/apiActions';
 import ApiList from './ApiList';
@@ -19,7 +19,10 @@ export default function ApiComponent() {
     <div>
       <img className="logo" src="assets/logo.png" alt="" />
       <h1>Персонажи</h1>
-      <input type="text" v-model="search" placeholder="Поиск" />
+      <input
+        type="text"
+        placeholder="Поиск"
+      />
       {api.map((el) => <ApiList key={el.id} apis={el} />)}
     </div>
   );
