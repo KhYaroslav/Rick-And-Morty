@@ -9,7 +9,6 @@ export default function ApiList({ apis }) {
     dispatch(deleteApiPost(apis.id));
   };
   return (
-    <div className="position">
       <div className="content">
         <div className="content-characters" v-for="character in filterSearch">
           <div className="character">
@@ -23,6 +22,5 @@ export default function ApiList({ apis }) {
           </div>
         </div>
       </div>
-    </div>
   );
 }

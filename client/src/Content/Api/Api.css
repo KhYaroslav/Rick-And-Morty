@@ -15,11 +15,8 @@
 }
 
 body {
-  background: linear-gradient(to top, #078925, #2f8078);}
-
-.position {
-  display: flex;
-  justify-content: space-between;
+  background: black;
+  background-image: url("../../../public//assets/background.gif");
 }
 
 .content {
@@ -30,6 +27,7 @@ body {
   width: 80%;
   margin: 0 auto;
 }
+
 .content-characters {
   background: #002128;
   padding: 1rem;
@@ -50,6 +48,7 @@ body {
 }
 img.logo {
   width: 70%;
+  z-index: -10;
 }
 img {
   height: 50%;

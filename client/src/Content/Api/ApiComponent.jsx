@@ -6,7 +6,7 @@ import './Api.css';
 
 export default function ApiComponent() {
   const api = useSelector((state) => state.api);
-  console.log('🚀 ~ file: ApiComponent.jsx ~ line 8 ~ ApiComponent ~ api', api);
+  const [query, setQuery] = useState('');
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -17,11 +17,13 @@ export default function ApiComponent() {
 
   return (
     <div>
-      <img className="logo" src="assets/logo.png" alt="" />
+      <img className="logo" src="assets/intro.gif" alt="" />
       <h1>Персонажи</h1>
       <input
         type="text"
         placeholder="Поиск"
+        onChange={(event) => setQuery(event.target.value)}
+        value={query}
       />
       {api.map((el) => <ApiList key={el.id} apis={el} />)}
     </div>
