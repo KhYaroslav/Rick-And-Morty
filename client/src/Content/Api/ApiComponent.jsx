@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addApiPost } from '../../Redux/actions/apiActions';
+import { getApi, allApiPost } from '../../Redux/actions/apiActions';
 import ApiList from './ApiList';
 import './Api.css';
 
 export default function ApiComponent() {
   const api = useSelector((state) => state.api);
-  const [query, setQuery] = useState('');
+  const [input, setInput] = useState({});
+
+  const changeHandler = (e) => {
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const dispatch = useDispatch();
+
   useEffect(() => {
-    if (!api.length) {
-      dispatch(addApiPost());
+    if (input.input) {
+      dispatch(getApi(input));
     }
+  }, [input]);
+
+  useEffect(() => {
+    dispatch(allApiPost());
   }, []);
 
   return (
@@ -21,11 +30,12 @@ export default function ApiComponent() {
       <h1>Персонажи</h1>
       <input
         type="text"
+        name="input"
         placeholder="Поиск"
-        onChange={(event) => setQuery(event.target.value)}
-        value={query}
+        onChange={changeHandler}
+        value={input.input || ''}
       />
-      {api.map((el) => <ApiList key={el.id} apis={el} />)}
+      {api && api.map((el) => <ApiList key={el.id} apis={el} />)}
     </div>
   );
 }
