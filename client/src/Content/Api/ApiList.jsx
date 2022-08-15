@@ -9,6 +9,16 @@ export default function ApiList({ apis }) {
     dispatch(deleteApiPost(apis.id));
   };
 
+  const color = (status) => {
+    if (status === 'Alive') {
+      return 'green';
+    }
+    if (status === 'Dead') {
+      return 'red';
+    }
+    return 'orange';
+  };
+
   return (
     <div className="content">
       <div className="content-characters" v-for="character in filterSearch">
@@ -17,7 +27,7 @@ export default function ApiList({ apis }) {
           <div className="info-character">
             <h2>{apis.name}</h2>
             <h4>{apis.species}</h4>
-            <h4 style={{background: apis.status ? 'green' : 'red' }}>{apis.status}</h4>
+            <h4 style={{ background: color(apis.status) }}>{apis.status}</h4>
             <h4 onClick={deleteHandler}>Удалить</h4>
           </div>
         </div>
