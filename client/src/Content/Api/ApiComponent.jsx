@@ -35,7 +35,9 @@ export default function ApiComponent() {
         onChange={changeHandler}
         value={input.input || ''}
       />
-      {api && api.map((el) => <ApiList key={el.id} apis={el} />)}
+      <div className="content">
+        {api && api.map((el) => <ApiList key={el.id} apis={el} />)}
+      </div>
     </div>
   );
 }
